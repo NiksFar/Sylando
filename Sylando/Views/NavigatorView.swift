@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct NavigatorView: View {
+    
+    @State private var cartVM = CartViewModel()
+    
     var body: some View {
         
         TabView {
@@ -18,7 +21,7 @@ struct NavigatorView: View {
                 CartView()
             }
         }
-        
+        .environment(cartVM)
     }
 }
 

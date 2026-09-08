@@ -41,10 +41,21 @@ struct ShirtAddView: View {
                 TextField("Preis", text: $price)
                     .keyboardType(.decimalPad)
                 
+                Button("Speichern") {
+                    addShirt()
+                }
+                .frame(maxWidth: .infinity)
             }
         }
         .navigationTitle(Text("Neues T-Shirt"))
     }
+    
+    private func addShirt() {
+        let newShirt = Shirt(title: title, price: Double(price) ?? 0, size: size.rawValue)
+        shirtsViewModel.addNewShirt(shirt: newShirt)
+        isPresented = false
+    }
+    
 }
 
 #Preview {

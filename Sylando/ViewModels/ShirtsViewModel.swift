@@ -16,4 +16,8 @@ class ShirtsViewModel {
                                    Shirt(title: "Black V-Neck", price: 21.99, size: "L"),
                                    Shirt(title: "Graphic Print Tee", price: 24.99, size: "S")]
     
+    func addNewShirt(shirt: Shirt) {
+        shirts.append(shirt)
+    }
+    
 }

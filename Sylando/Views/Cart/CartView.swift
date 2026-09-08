@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CartView: View {
     
+    @Environment(CartViewModel.self) private var cartVM
+    
     var body: some View {
         
         NavigationStack {
@@ -26,4 +28,5 @@ struct CartView: View {
 
 #Preview {
     CartView()
+        .environment(CartViewModel())
 }

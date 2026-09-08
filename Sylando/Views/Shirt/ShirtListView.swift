@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ShirtListView: View {
     
+    @Environment(CartViewModel.self) private var cartVM
+    
     @State private var shirtsViewModel = ShirtsViewModel()
     @State private var addNewShirt: Bool = false
     
@@ -39,4 +41,5 @@ struct ShirtListView: View {
 
 #Preview {
     ShirtListView()
+        .environment(CartViewModel())
 }
