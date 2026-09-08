@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ShirtListView: View {
     
-    @State var shirtsViewModel = ShirtsViewModel()
+    @State private var shirtsViewModel = ShirtsViewModel()
+    @State private var addNewShirt: Bool = false
     
     var body: some View {
         
@@ -19,8 +20,20 @@ struct ShirtListView: View {
                     Text(shirt.title)
                 }
             }
+            .toolbar {
+                Button {
+                    addNewShirt = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
         }
         .navigationTitle(Text("T-Shirts"))
+        
+        .sheet(isPresented: $addNewShirt, content: {
+            ShirtAddView(shirtsViewModel: shirtsViewModel,
+                         isPresented: $addNewShirt)
+        })
     }
 }
 
