@@ -16,5 +16,9 @@ class CartViewModel {
                                    Shirt(title: "Black V-Neck", price: 21.99, size: "L"),
                                    Shirt(title: "Graphic Print Tee", price: 24.99, size: "S")]
     
+    var subtotal: Double {
+        shirtsToBuy.reduce(0) { $0 + $1.price }
+    }
+    
 }
 

@@ -14,13 +14,17 @@ struct CartCheckoutView: View {
     @State private var city: String = ""
     
     var body: some View {
-        
-        VStack(spacing: 15) {
-            
-            TextField("Name", text: $name)
-            TextField("Straße", text: $street)
-            TextField("Stadt", text: $city)
-            
+        NavigationStack {
+            VStack(spacing: 15) {
+                
+                TextField("Name", text: $name)
+                TextField("Straße", text: $street)
+                TextField("Stadt", text: $city)
+                
+                NavigationLink(destination: CartSummaryView(name: name, street: street, city: city), label: {
+                    Text("Zur Bestellübersicht")
+                })
+            }
         }
         .padding(20)
     }
