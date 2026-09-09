@@ -19,11 +19,29 @@ struct ShirtAddView: View {
     var body: some View {
         
         NavigationStack {
+            
             Form {
+                
+                if let quote = shirtsViewModel.quote {
+                    ZStack {
+                        Image(systemName: "tshirt.fill")
+                            .font(.system(size: 200))
+                            .fontWeight(.ultraLight)
+                            .foregroundStyle(.blue)
+                        
+                        Text(quote.text)
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .frame(width: 110)
+                            .foregroundStyle(.white)
+                            .multilineTextAlignment(.center)
+                    }
+                    .frame(maxWidth: .infinity)
+                }
                 
                 Section {
                     Button("Zitat laden") {
-                       //
+                        shirtsViewModel.fetchQuote()
                     }
                     .frame(maxWidth: .infinity)
                     .foregroundStyle(.white)
