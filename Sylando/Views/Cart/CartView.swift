@@ -16,7 +16,9 @@ struct CartView: View {
         NavigationStack {
             VStack {
                 List {
-                    Text("Cart")
+                    ForEach(cartVM.shirtsToBuy) { shirt in
+                        ShirtListRowView(shirt: shirt)
+                    }
                 }
                 NavigationLink(destination: CartCheckoutView()) {
                     Text("Bestellung aufgeben")
