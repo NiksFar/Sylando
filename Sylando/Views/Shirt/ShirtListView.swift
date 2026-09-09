@@ -19,7 +19,7 @@ struct ShirtListView: View {
         NavigationStack {
             List {
                 ForEach(shirtsViewModel.shirts) { shirt in
-                    Text(shirt.title)
+                    ShirtListRowView(shirt: shirt)
                 }
             }
             .toolbar {
