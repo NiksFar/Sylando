@@ -10,14 +10,15 @@ import SwiftUI
 struct CartSummaryView: View {
     
     @Environment(CartViewModel.self) private var cartVM
+    @State private var isOrderConfirmed = false
     
     var name: String
     var street: String
     var city: String
     
     var body: some View {
-         
-            
+        
+        NavigationStack {
             Form {
                 Section(header: Text("Lieferadresse")) {
                     Text(name)
@@ -27,14 +28,7 @@ struct CartSummaryView: View {
                 
                 Section(header: Text("Bestellübersicht")) {
                     ForEach(cartVM.shirtsToBuy) { item in
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text(item.title)
-                                Spacer()
-                                Text("\(item.price, specifier: "%.2f") €")
-                            }
-                            Text(item.size)
-                        }
+                        ShirtListRowView(shirt: item)
                     }
                 }
                 HStack {
@@ -43,11 +37,20 @@ struct CartSummaryView: View {
                     Text("\(cartVM.subtotal, specifier: "%.2f") €")
                 }
                 
-                
+                Section {
+                    Button("Bestellung abschicken") {
+                        cartVM.clearCart()
+                        isOrderConfirmed = true
+                    }
+                    .frame(maxWidth: .infinity)
+                    .foregroundStyle(.white)
+                    .listRowBackground(Color(.blue))
+                }
             }
-            
-        
-        
+        }
+        .navigationDestination(isPresented: $isOrderConfirmed, destination: {
+            OrderSuccessView()
+        })
     }
 }
 

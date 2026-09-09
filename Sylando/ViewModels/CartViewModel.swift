@@ -20,5 +20,9 @@ class CartViewModel {
         shirtsToBuy.reduce(0) { $0 + $1.price }
     }
     
+    func clearCart() {
+        shirtsToBuy.removeAll()
+    }
+    
 }
 
