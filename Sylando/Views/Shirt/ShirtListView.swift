@@ -10,15 +10,15 @@ import SwiftUI
 struct ShirtListView: View {
     
     @Environment(CartViewModel.self) private var cartVM
+    @Environment(ShirtsViewModel.self) private var shirtsVM
     
-    @State private var shirtsViewModel = ShirtsViewModel()
     @State private var addNewShirt: Bool = false
     
     var body: some View {
         
         NavigationStack {
             List {
-                ForEach(shirtsViewModel.shirts) { shirt in
+                ForEach(shirtsVM.shirts) { shirt in
                     ShirtListRowView(shirt: shirt)
                 }
             }
@@ -33,7 +33,7 @@ struct ShirtListView: View {
         .navigationTitle(Text("T-Shirts"))
         
         .sheet(isPresented: $addNewShirt, content: {
-            ShirtAddView(shirtsViewModel: shirtsViewModel,
+            ShirtAddView(shirtsViewModel: shirtsVM,
                          isPresented: $addNewShirt)
         })
     }
@@ -42,4 +42,5 @@ struct ShirtListView: View {
 #Preview {
     ShirtListView()
         .environment(CartViewModel())
+        .environment(ShirtsViewModel())
 }

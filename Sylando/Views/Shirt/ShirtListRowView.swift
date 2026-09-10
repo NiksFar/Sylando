@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ShirtListRowView: View {
     
+    @Environment(ShirtsViewModel.self) private var shirtsVM
+    
     let shirt: Shirt
     
     var body: some View {
@@ -21,9 +23,20 @@ struct ShirtListRowView: View {
             }
             Text(shirt.size)
         }
+        .padding()
+        .swipeActions {
+            Button {
+                shirtsVM.deleteShirt(shirt: shirt)
+            } label: {
+                Label("Löschen", systemImage: "trash")
+            }
+            .tint(.red)
+        }
     }
+        
 }
 
 #Preview {
     ShirtListRowView(shirt: Shirt(title: "Graphic Print Tee", price: 24.99, size: "S"))
+        .environment(ShirtsViewModel())
 }

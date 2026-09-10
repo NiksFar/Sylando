@@ -10,6 +10,7 @@ import SwiftUI
 struct NavigatorView: View {
     
     @State private var cartVM = CartViewModel()
+    @State private var shirtsVM = ShirtsViewModel()
     
     var body: some View {
         
@@ -22,6 +23,7 @@ struct NavigatorView: View {
             }
         }
         .environment(cartVM)
+        .environment(shirtsVM)
     }
 }
 

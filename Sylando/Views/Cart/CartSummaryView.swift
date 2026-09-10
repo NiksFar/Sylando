@@ -10,6 +10,7 @@ import SwiftUI
 struct CartSummaryView: View {
     
     @Environment(CartViewModel.self) private var cartVM
+    
     @State private var isOrderConfirmed = false
     
     var name: String
@@ -27,8 +28,15 @@ struct CartSummaryView: View {
                 }
                 
                 Section(header: Text("Bestellübersicht")) {
-                    ForEach(cartVM.shirtsToBuy) { item in
-                        ShirtListRowView(shirt: item)
+                    ForEach(cartVM.shirtsToBuy) { shirt in
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text(shirt.title)
+                                Spacer()
+                                Text("\(shirt.price, specifier: "%.2f") €")
+                            }
+                            Text(shirt.size)
+                        }
                     }
                 }
                 HStack {
