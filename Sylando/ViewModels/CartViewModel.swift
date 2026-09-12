@@ -12,9 +12,7 @@ import SwiftUI
 @Observable
 class CartViewModel {
     
-    var shirtsToBuy: [Shirt] = [Shirt(title: "Classic White Tee", price: 19.99, size: "M"),
-                                   Shirt(title: "Black V-Neck", price: 21.99, size: "L"),
-                                   Shirt(title: "Graphic Print Tee", price: 24.99, size: "S")]
+    var shirtsToBuy: [Shirt] = []
     
     var subtotal: Double {
         shirtsToBuy.reduce(0) { $0 + $1.price }
@@ -22,6 +20,10 @@ class CartViewModel {
     
     func clearCart() {
         shirtsToBuy.removeAll()
+    }
+    
+    func addToCart(shirt: Shirt) {
+        shirtsToBuy.append(shirt)
     }
     
 }

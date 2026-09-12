@@ -10,6 +10,7 @@ import SwiftUI
 struct ShirtListRowView: View {
     
     @Environment(ShirtsViewModel.self) private var shirtsVM
+    @Environment(CartViewModel.self) private var cartVM
     
     let shirt: Shirt
     
@@ -23,8 +24,8 @@ struct ShirtListRowView: View {
             }
             Text(shirt.size)
         }
-        .padding()
-        .swipeActions {
+        
+        .swipeActions(edge: .trailing) {
             Button {
                 shirtsVM.deleteShirt(shirt: shirt)
             } label: {
@@ -32,6 +33,16 @@ struct ShirtListRowView: View {
             }
             .tint(.red)
         }
+        
+        .swipeActions(edge: .leading) {
+            Button {
+                cartVM.addToCart(shirt: shirt)
+            } label: {
+                Label("Add", systemImage: "cart.fill")
+            }
+            .tint(.green)
+        }
+        
     }
         
 }
@@ -39,4 +50,5 @@ struct ShirtListRowView: View {
 #Preview {
     ShirtListRowView(shirt: Shirt(title: "Graphic Print Tee", price: 24.99, size: "S"))
         .environment(ShirtsViewModel())
+        .environment(CartViewModel())
 }
