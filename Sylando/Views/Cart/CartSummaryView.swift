@@ -10,8 +10,7 @@ import SwiftUI
 struct CartSummaryView: View {
     
     @Environment(CartViewModel.self) private var cartVM
-    
-    @State private var isOrderConfirmed = false
+    @Binding var cartNavigationPath: NavigationPath
     
     var name: String
     var street: String
@@ -19,7 +18,6 @@ struct CartSummaryView: View {
     
     var body: some View {
         
-        NavigationStack {
             Form {
                 Section(header: Text("Lieferadresse")) {
                     Text(name)
@@ -48,21 +46,18 @@ struct CartSummaryView: View {
                 Section {
                     Button("Bestellung abschicken") {
                         cartVM.clearCart()
-                        isOrderConfirmed = true
+                        cartNavigationPath.append(CartNavigationPath.success)
                     }
                     .frame(maxWidth: .infinity)
                     .foregroundStyle(.white)
                     .listRowBackground(Color(.blue))
                 }
             }
-        }
-        .navigationDestination(isPresented: $isOrderConfirmed, destination: {
-            OrderSuccessView()
-        })
+        
     }
 }
 
 #Preview {
-    CartSummaryView(name: "Alex", street: "Street 33", city: "Berlin")
+    CartSummaryView(cartNavigationPath: .constant(NavigationPath()), name: "Alex", street: "Street 33", city: "Berlin")
         .environment(CartViewModel())
 }

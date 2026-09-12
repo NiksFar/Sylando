@@ -9,27 +9,34 @@ import SwiftUI
 
 struct CartCheckoutView: View {
     
-    @State private var name: String = ""
-    @State private var street: String = ""
-    @State private var city: String = ""
+    @Binding var cartNavigationPath: NavigationPath
+    
+    @Binding var name: String
+    @Binding var street: String
+    @Binding var city: String
     
     var body: some View {
-        NavigationStack {
+        
             VStack(spacing: 15) {
                 
                 TextField("Name", text: $name)
                 TextField("Straße", text: $street)
                 TextField("Stadt", text: $city)
                 
-                NavigationLink(destination: CartSummaryView(name: name, street: street, city: city), label: {
-                    Text("Zur Bestellübersicht")
-                })
-            }
+                Button("Zur Bestellübersicht") {
+                    cartNavigationPath.append(CartNavigationPath.summary)
+                }
+            
         }
         .padding(20)
     }
 }
 
 #Preview {
-    CartCheckoutView()
+    CartCheckoutView(
+        cartNavigationPath: .constant(NavigationPath()),
+        name: .constant(""),
+        street: .constant(""),
+        city: .constant("")
+    )
 }

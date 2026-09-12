@@ -9,6 +9,8 @@ import SwiftUI
 
 struct OrderSuccessView: View {
     
+    @Binding var cartNavigationPath: NavigationPath
+    
     var body: some View {
         
         VStack{
@@ -19,10 +21,15 @@ struct OrderSuccessView: View {
             Text("Bestellung erfolgreich!")
                 .font(.title2)
         }
-        
+        .onAppear {
+            Task {
+                try await Task.sleep(for: .seconds(3))
+                cartNavigationPath = NavigationPath()
+            }
+        }
     }
 }
 
 #Preview {
-    OrderSuccessView()
+    OrderSuccessView(cartNavigationPath: .constant(NavigationPath()))
 }
