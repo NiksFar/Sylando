@@ -31,14 +31,7 @@ struct CartView: View {
                     
                     List {
                         ForEach(cartVM.shirtsToBuy) { shirt in
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text(shirt.title)
-                                    Spacer()
-                                    Text("\(shirt.price, specifier: "%.2f") €")
-                                }
-                                Text(shirt.size)
-                            }
+                            CartListRowView(shirt: shirt)
                         }
                     }
                     

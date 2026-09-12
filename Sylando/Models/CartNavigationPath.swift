@@ -8,9 +8,7 @@
 import Foundation
 
 enum CartNavigationPath: Hashable {
-    
         case checkout
         case summary
         case success
-    
 }
