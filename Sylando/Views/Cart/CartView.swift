@@ -33,11 +33,16 @@ struct CartView: View {
                         ForEach(cartVM.shirtsToBuy) { shirt in
                             CartListRowView(shirt: shirt)
                         }
+                        Section {
+                            Button("Bestellung aufgeben") {
+                                cartNavigationPath.append(CartNavigationPath.checkout)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .listRowBackground(Color.blue)
+                            .foregroundStyle(.white)
+                        }
                     }
                     
-                    Button("Bestellung aufgeben") {
-                        cartNavigationPath.append(CartNavigationPath.checkout)
-                    }
                 }
             }
             .navigationDestination(for: CartNavigationPath.self) { destination in
