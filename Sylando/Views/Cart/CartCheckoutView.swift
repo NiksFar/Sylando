@@ -17,16 +17,16 @@ struct CartCheckoutView: View {
     
     var body: some View {
         
-            VStack(spacing: 15) {
-                
-                TextField("Name", text: $name)
-                TextField("Straße", text: $street)
-                TextField("Stadt", text: $city)
-                
-                Button("Zur Bestellübersicht") {
-                    cartNavigationPath.append(CartNavigationPath.summary)
-                }
+        VStack(spacing: 25) {
             
+            TextField("Name", text: $name)
+            TextField("Straße", text: $street)
+            TextField("Stadt", text: $city)
+            
+            Button("Zur Bestellübersicht") {
+                cartNavigationPath.append(CartNavigationPath.summary)
+            }
+            .buttonStyle(.borderedProminent)
         }
         .padding(20)
     }

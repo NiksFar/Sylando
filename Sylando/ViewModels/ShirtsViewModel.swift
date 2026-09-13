@@ -12,12 +12,17 @@ import SwiftUI
 @Observable
 class ShirtsViewModel {
     
-    private let quoteRepository = QuoteRepository()
+    private let quoteRepository: QuoteRepository
+    
     var quote: Quote?
     
     var shirts: [Shirt] = [Shirt(title: "Classic White Tee", price: 19.99, size: "M"),
-                                   Shirt(title: "Black V-Neck", price: 21.99, size: "L"),
-                                   Shirt(title: "Graphic Print Tee", price: 24.99, size: "S")]
+                           Shirt(title: "Black V-Neck", price: 21.99, size: "L"),
+                           Shirt(title: "Graphic Print Tee", price: 24.99, size: "S")]
+    
+    init(quoteRepository: QuoteRepository) {
+        self.quoteRepository = quoteRepository
+    }
     
     func addNewShirt(shirt: Shirt) {
         shirts.append(shirt)
@@ -30,14 +35,14 @@ class ShirtsViewModel {
     
     @MainActor
     func fetchQuote() {
-       Task {
-           do {
-              quote = try await quoteRepository.getQuoteFromAPI()
-           } catch  let error as HTTPError {
-               print(error.message)
-           } catch {
-               print(error)
-           }
+        Task {
+            do {
+                quote = try await quoteRepository.getQuoteFromAPI()
+            } catch  let error as HTTPError {
+                print(error.message)
+            } catch {
+                print(error)
+            }
         }
     }
     

@@ -45,7 +45,7 @@ struct CartView: View {
                 case .checkout:
                     CartCheckoutView(cartNavigationPath: $cartNavigationPath, name: $name, street: $street, city: $city)
                 case .summary:
-                    CartSummaryView(cartNavigationPath: $cartNavigationPath,  name: name, street: street, city: city)
+                    CartSummaryView(cartNavigationPath: $cartNavigationPath,  name: $name, street: $street, city: $city)
                 case .success:
                     OrderSuccessView(cartNavigationPath: $cartNavigationPath)
                 }

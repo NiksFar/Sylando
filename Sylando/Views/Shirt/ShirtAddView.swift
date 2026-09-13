@@ -77,5 +77,5 @@ struct ShirtAddView: View {
 }
 
 #Preview {
-    ShirtAddView(shirtsViewModel: ShirtsViewModel(), isPresented: .constant(true))
+    ShirtAddView(shirtsViewModel: ShirtsViewModel(quoteRepository: LocalQuoteRepository()), isPresented: .constant(true))
 }

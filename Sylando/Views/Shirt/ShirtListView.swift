@@ -42,5 +42,5 @@ struct ShirtListView: View {
 #Preview {
     ShirtListView()
         .environment(CartViewModel())
-        .environment(ShirtsViewModel())
+        .environment(ShirtsViewModel(quoteRepository: LocalQuoteRepository()))
 }

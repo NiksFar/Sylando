@@ -49,6 +49,6 @@ struct ShirtListRowView: View {
 
 #Preview {
     ShirtListRowView(shirt: Shirt(title: "Graphic Print Tee", price: 24.99, size: "S"))
-        .environment(ShirtsViewModel())
+        .environment(ShirtsViewModel(quoteRepository: LocalQuoteRepository()))
         .environment(CartViewModel())
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CartListRowView: View {
-
+    
     @Environment(CartViewModel.self) private var cartVM
     
     let shirt: Shirt
@@ -33,7 +33,7 @@ struct CartListRowView: View {
             .tint(.red)
         }
     }
-        
+    
 }
 
 #Preview {

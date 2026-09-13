@@ -1,0 +1,27 @@
+[
+  {
+    "id": "1",
+    "author": "Albert Einstein",
+    "text": "Das Leben ist wie Fahrradfahren. Um das Gleichgewicht zu halten, musst du in Bewegung bleiben."
+  },
+  {
+    "id": "2",
+    "author": "Steve Jobs",
+    "text": "Die einzige Möglichkeit, großartige Arbeit zu leisten, ist zu lieben, was du tust."
+  },
+  {
+    "id": "3",
+    "author": "Mark Twain",
+    "text": "Der beste Weg, sich selbst aufzumuntern, ist, zu versuchen, jemand anderen aufzumuntern."
+  },
+  {
+    "id": "4",
+    "author": "Nelson Mandela",
+    "text": "Es scheint immer unmöglich, bis es getan ist."
+  },
+  {
+    "id": "5",
+    "author": "Walt Disney",
+    "text": "Alle unsere Träume können wahr werden, wenn wir den Mut haben, sie zu verfolgen."
+  }
+]

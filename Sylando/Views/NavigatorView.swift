@@ -10,7 +10,18 @@ import SwiftUI
 struct NavigatorView: View {
     
     @State private var cartVM = CartViewModel()
-    @State private var shirtsVM = ShirtsViewModel()
+    @State private var shirtsVM: ShirtsViewModel
+    let quoteRepository: QuoteRepository
+    
+    init(quoteRepository: QuoteRepository) {
+        self.quoteRepository = quoteRepository
+        
+        _shirtsVM = State(
+                    initialValue: ShirtsViewModel(
+                        quoteRepository: quoteRepository
+                    )
+        )
+    }
     
     var body: some View {
         
@@ -28,5 +39,5 @@ struct NavigatorView: View {
 }
 
 #Preview {
-    NavigatorView()
+    NavigatorView(quoteRepository: LocalQuoteRepository())
 }
